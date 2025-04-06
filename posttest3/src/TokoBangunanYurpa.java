@@ -73,6 +73,7 @@ public class TokoBangunanYurpa {
         } while (opsi != 0);
     }
 
+
     private static void tambahPengguna(Scanner input) {
         input.nextLine(); 
         System.out.print("Masukkan Nama: ");
@@ -83,17 +84,26 @@ public class TokoBangunanYurpa {
         String password = input.nextLine();
         System.out.print("Masukkan Peran (admin/karyawan): ");
         String peran = input.nextLine();
-
-        daftarPengguna.add(new Pengguna(nama, username, password, peran));
+    
+        if (peran.equalsIgnoreCase("admin")) {
+            daftarPengguna.add(new Admin(nama, username, password));
+        } else if (peran.equalsIgnoreCase("karyawan")) {
+            daftarPengguna.add(new Karyawan(nama, username, password));
+        } else {
+            daftarPengguna.add(new Pengguna(nama, username, password, peran));
+        }
+    
         System.out.println("Pengguna berhasil ditambahkan!");
     }
+    
 
     private static void tampilkanPengguna() {
         if (daftarPengguna.isEmpty()) {
             System.out.println("Tidak ada pengguna terdaftar.");
         } else {
             for (Pengguna p : daftarPengguna) {
-                System.out.println("Nama: " + p.getNama() + ", Peran: " + p.getRole());
+                p.tampilkanInfo(); 
+                System.out.println("------------------------");
             }
         }
     }
