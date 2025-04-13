@@ -100,7 +100,7 @@ public class TokoBangunanYurpa {
             System.out.println("Tidak ada pengguna terdaftar.");
         } else {
             for (Pengguna p : daftarPengguna) {
-                // tampilkan 1method overloading
+                // tampilkan method overloading
                 p.tampilkanInfo(true);
                 System.out.println("------------------------");
             }
